@@ -1,0 +1,4 @@
+// Use this file to temporary ignore the linting
+// resources/views/output/**
+resources/views/**
+resources/views/emails/**

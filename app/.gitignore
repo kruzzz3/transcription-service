@@ -1,0 +1,62 @@
+# Ignore system files
+*.DS_Store
+**.DS_Store
+**/*.DS_Store
+.tools
+.cache
+
+# Ignore VSCode config
+.vscode/
+/.vscode
+
+# Ignore local tools folder
+.tools/
+
+# Ignore vendor directory
+# This directory is managed by composer
+vendor/
+
+# Ignore Log Files
+npm-debug.log
+yarn-error.log
+
+# Ignore Node Modules
+node_modules/
+
+# Ignore temp laravel directories
+public/hot
+public/storage
+storage/*.key
+.phpunit.result.cache
+storage/framework/maintenance.php
+
+# Ignore files with sensitive information
+.env
+.env.backup
+
+# Ignore Apache Config with htaccess
+.htaccess
+*.htaccess
+**.htaccess
+**/*.htaccess
+
+# Laravel defaults
+/.phpunit.cache
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode

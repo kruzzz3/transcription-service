@@ -1,0 +1,83 @@
+$enable-responsive-font-sizes: false;
+
+$blue: #075c85;
+$primary: $blue;
+$light: #f8f9fa;
+$default: #fcfcfc;
+$dark: #343a40;
+$secondary: #727272;
+$success: #249b14;
+$danger: #f07060;
+$warning: #ffd500;
+$feedback-color: #009173;
+$joblisting-color: #910049;
+$gray-400: #ced4da;
+$black: #000 !default;
+
+// font
+$font-weight-lighter: 100;
+$font-weight-light: 150;
+$font-weight-normal: 200;
+$font-weight-bold: 400;
+$font-weight-bolder: 500;
+$font-weight-boldest: 600;
+$headings-font-weight: 150;
+$lead-font-weight: 150;
+
+// swiper
+$swiperColor: $blue;
+
+// Font
+$font-family-base: "Public-Sans-Variable", sans-serif;
+$font-size-base: 16;
+$font-family-secondary: "Quicksand-Variable", sans-serif;
+
+// Navbar Top
+$navbar-top-height: 60px;
+$navbar-light-color: rgba($black, .6) !default;
+
+// Sidebar Left
+$sidebar-left-width-xs: 90px;
+$sidebar-left-width: 240px;
+$sidebar-left-width-xxxl: 300px;
+
+// Sidebar Right
+$guidance-width: 334px;
+$guidance-width-lg: 400px;
+$guidance-width-xxxl: 450px;
+
+// Layers
+$layer-overlay-everything: 10000;
+$layer-sidebar-left: 1000;
+$layer-sticky-navbar: 100;
+$layer-guidance: 10;
+
+// All Grid-Breakpoints
+$grid-breakpoints: (
+  xxxs: 0,
+  xxs: 320px,
+  xs: 568px,
+  sm: 667px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px,
+  xxxl: 1800px,
+);
+
+// All Max-Container-Widths
+$container-max-widths: (
+  xxxs: 0,
+  xxs: 320px,
+  xs: 568px,
+  sm: 667px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px,
+  xxxl: 1800px,
+);
+
+// CV-Preview & CV-Feedback
+$default-font-size: 4.2mm;
+$default-line-height: 1.5;

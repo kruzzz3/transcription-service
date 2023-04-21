@@ -1,0 +1,373 @@
+.h-fixed-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.h-fill-1 {
+  min-height: calc(100% - #{$navbar-top-height});
+}
+
+.h-fill-2 {
+  min-height: calc(100% - 2 * #{$navbar-top-height});
+}
+
+.h-auto-height {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: auto !important;
+}
+
+.h-disabled {
+  pointer-events: none;
+  opacity: 0.4;
+
+  * {
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.h-blurred {
+  * {
+    color: transparent;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.h-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.h-cursor-default {
+  cursor: default;
+
+  * {
+    cursor: default;
+  }
+}
+
+.h-cursor-pointer {
+  cursor: pointer;
+  user-select: none;
+
+  * {
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+@each $size in (80, 85, 90, 95, 100, 105, 110) {
+  .w-px-#{$size} {
+    width: #{$size}px;
+  }
+}
+
+.border-tr-radius-0 {
+  border-top-right-radius: 0;
+}
+
+.border-tl-radius-0 {
+  border-top-left-radius: 0;
+}
+
+.border-br-radius-0 {
+  border-bottom-right-radius: 0;
+}
+
+.border-bl-radius-0 {
+  border-bottom-left-radius: 0;
+}
+
+.border-t-radius-0 {
+  @extend .border-tr-radius-0;
+  @extend .border-tl-radius-0;
+}
+
+.border-b-radius-0 {
+  @extend .border-br-radius-0;
+  @extend .border-bl-radius-0;
+}
+
+.border-l-radius-0 {
+  @extend .border-tl-radius-0;
+  @extend .border-bl-radius-0;
+}
+
+.border-r-radius-0 {
+  @extend .border-tr-radius-0;
+  @extend .border-br-radius-0;
+}
+
+.border-radius-0 {
+  @extend .border-tr-radius-0;
+  @extend .border-tl-radius-0;
+  @extend .border-br-radius-0;
+  @extend .border-bl-radius-0;
+}
+
+.cursor-select {
+  cursor: pointer;
+
+  * {
+    cursor: pointer;
+  }
+}
+
+//
+// Helper Classes
+// w-*
+//
+// Extend the w-100 helper from Bootstrap
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .w#{$infix}-100 {
+      width: 100% !important;
+    }
+  }
+}
+
+// Extend the w-auto helper from Bootstrap
+.w-auto {
+  width: auto !important;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .w#{$infix}-auto {
+      width: auto !important;
+    }
+  }
+}
+
+@each $name,
+$color in map-merge($colors, $grays) {
+  .bg-#{$name} {
+    background-color: $color;
+  }
+}
+
+.bg-default {
+  background-color: $default;
+}
+
+// Create more appealing scrollbars
+@mixin scrollbars($size, $foreground-color, $background-color) {
+
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+.ribbon-wrapper {
+  width: 108px;
+  height: 108px;
+  overflow: hidden;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+
+  .ribbon {
+    font: $font-weight-boldest 15px Sans-Serif;
+    line-height: 18px;
+    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+    position: relative;
+    padding: 7px 0;
+    left: -4px;
+    top: 26px;
+    width: 150px;
+    // background-color: #898f8f;
+    background-color: $success;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
+    box-shadow: -3px 5px 6px -5px rgba(0, 0, 0, 0.5);
+    outline: 1px dashed #fff;
+    outline-offset: -4px;
+
+    &:after,
+    &:before {
+      content: "";
+      border-top: 4px solid darken($success, 15%);
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      position: absolute;
+      bottom: -4px;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0px;
+      top: 100%;
+      z-index: -1;
+      border-left: 4px solid darken($success, 15%);
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-top: 4px solid darken($success, 15%);
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      right: 7px;
+      top: 100%;
+      z-index: -1;
+      border-left: 4px solid transparent;
+      border-right: 4px solid darken($success, 15%);
+      border-bottom: 4px solid transparent;
+      border-top: 4px solid darken($success, 15%);
+    }
+  }
+
+  &.ribbon-primary {
+    .ribbon {
+      background-color: $primary;
+
+      &:after,
+      &:before {
+        content: "";
+        border-top: 4px solid darken($primary, 15%);
+      }
+
+      &:before {
+        border-left: 4px solid darken($primary, 15%);
+        border-top: 4px solid darken($primary, 15%);
+      }
+
+      &:after {
+        border-right: 4px solid darken($primary, 15%);
+        border-top: 4px solid darken($primary, 15%);
+      }
+    }
+  }
+}
+
+.spinner-overlay,
+.locked-overlay {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  color: $primary;
+  z-index: 1;
+
+  &:hover {
+    text-decoration: none;
+  }
+  &.generating{
+    display: flex;
+    background-color: #ffffffcc;
+  }
+}
+
+body.trial {
+  .swiper-slide:not(.swiper-slide-active) {
+    .locked-overlay {
+      pointer-events: none;
+    }
+  }
+
+  .locked {
+    * {
+      user-select: none;
+    }
+
+    .locked-overlay {
+      display: flex;
+
+      &:hover {
+        .icon {
+          @extend .text-primary;
+        }
+
+        span.btn {
+          @extend .btn-primary;
+        }
+
+        a {
+          text-decoration: none;
+        }
+
+        .centered-div {
+          color: $primary;
+          background-color: #ffffffbb;
+        }
+      }
+
+      &.blurred {
+        backdrop-filter: blur(3px) opacity(50%);
+      }
+
+      .centered-div {
+        color: $secondary;
+        padding: 3rem;
+        border-radius: 50%;
+        background-color: #ffffff66;
+
+        i {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+}
+
+.btn-feedback {
+  @include button-variant($feedback-color,
+    $feedback-color,
+    darken($feedback-color, 5%),
+    darken($feedback-color, 5%),
+    darken($feedback-color, 5%),
+    darken($feedback-color, 5%));
+}
+
+.btn-outline-feedback {
+  @include button-outline-variant($feedback-color);
+}
+
+@include bg-variant(".bg-feedback", $feedback-color, true);
+
+.btn-joblisting {
+  @include button-variant($joblisting-color,
+    $joblisting-color,
+    darken($joblisting-color, 5%),
+    darken($joblisting-color, 5%),
+    darken($joblisting-color, 5%),
+    darken($joblisting-color, 5%));
+}
+
+.btn-outline-joblisting {
+  @include button-outline-variant($joblisting-color);
+}
+
+@include bg-variant(".bg-joblisting", $joblisting-color, true);

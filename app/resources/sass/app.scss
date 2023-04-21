@@ -1,0 +1,36 @@
+/************************************************************************
+ * CUSTOM VARIABLES & FUNCTIONS
+ ***********************************************************************/
+
+@import "custom_variables"; // Custom Variables / Bootstrap Overrides
+
+/************************************************************************
+ * VENDORS
+ ***********************************************************************/
+
+@import "~bootstrap/scss/bootstrap";
+
+// Font Awesome
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+
+.fa,
+.far,
+.fas {
+  font-family: "Font Awesome 5 Free" !important;
+}
+
+.fab {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+
+/************************************************************************
+ * CUSTOM STYLES
+ ***********************************************************************/
+/* purgecss start ignore */
+
+@import "global_overrides"; // Global Overrrides
+
+/* purgecss end ignore */

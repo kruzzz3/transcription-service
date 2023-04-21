@@ -1,0 +1,69 @@
+# Transcription Service
+# ts
+
+# Version of our Dockerfile.
+version: "3.7"
+
+# Network that our containers will be connected to so that all of them can talk to each other.
+networks:
+  ts-network:
+    driver: bridge
+
+services:
+  ts-app:
+    # Specify that the image for this service has to built first, this is because the actual image does not exists yet, just its definition (Dockerfile).
+    build:
+      context: ./
+      dockerfile: Dockerfile.app
+    # Tell Docker to name the image that will be built as "laravel-php". Can be any name.
+    image: laravel-php
+    # Specify how we want to call that container when its running.
+    container_name: ts-app
+    # Various environment variables to later connect to mysql.
+    environment:
+      # set upload_max_filesize in php.ini
+      UPLOAD_LIMIT: 256M
+      UPLOAD_MAX_FILESIZE: 256M
+      POST_MAX_SIZE: 256M
+    # Restart policy
+    restart: unless-stopped
+    # Tell Docker to also load a terminal as part of the container.
+    tty: true
+    # Working directory.
+    working_dir: /var/www
+    # Define a volume the container will use, which is basically a mapping between a folder/file in our machine to a folder/file inside the container.
+    volumes:
+      - ./app:/var/www
+    # Tell Docker to connect to the network so that it will be able to comunicate with other containers connected to the same network.
+    networks:
+      - ts-network
+
+  ts-nginx:
+    # Specify that the image for this service has to built first, this is because the actual image does not exists yet, just its definition (Dockerfile).
+    build:
+      context: ./
+      dockerfile: Dockerfile.nginx
+    # Specify how we want to call that container when its running.
+    container_name: ts-nginx
+    # Tell Docker on which container this one depends.
+    depends_on:
+      - "ts-app"
+    # Restart policy
+    restart: unless-stopped
+    # Tell Docker to also load a terminal as part of the container.
+    tty: true
+    # Map the 8080 port of our machine to port 80 of the container
+    # Map the 80 port of our machine to port 80 of the container
+    # Map the 443 port of our machine to port 443 of the container
+    ports:
+      - 8080:8080
+      - 80:80
+      - 443:443
+    # Define a volume the container will use, which is basically a mapping between a folder/file in our machine to a folder/file inside the container.
+    # Also map the custom nginx configuration file.
+    volumes:
+      - ./app:/var/www
+      #- ./nginx/conf:/etc/nginx/conf.d
+    # Tell Docker to connect to the network so that it will be able to comunicate with other containers connected to the same network.
+    networks:
+      - ts-network

@@ -1,0 +1,7 @@
+{
+    "indentSize": 4,
+    "wrapAttributes": "preserve",
+    "wrapLineLength": 9999,
+    "endWithNewLine": true,
+    "useTabs": false
+}
